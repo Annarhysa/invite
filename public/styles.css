@@ -1,0 +1,698 @@
+/* Ferrari Color Scheme - Properly Implemented */
+:root {
+    --ferrari-green: #009A4E;
+    --ferrari-white: #FFFFFF;
+    --ferrari-red: #ED1C24;
+    --ferrari-yellow: #FFF200;
+    --ferrari-black: #000000;
+    
+    /* Modern Color Palette - Updated for White Background */
+    --primary: #ffffff;
+    --secondary: #f8f9fa;
+    --accent: #e9ecef;
+    --highlight: var(--ferrari-red);
+    --text-primary: #1a1a2e;
+    --text-secondary: #6c757d;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --card-border: rgba(0, 0, 0, 0.1);
+    --gradient-primary: linear-gradient(135deg, var(--ferrari-green) 0%, var(--ferrari-yellow) 100%);
+    --gradient-secondary: linear-gradient(135deg, var(--ferrari-red) 0%, var(--ferrari-black) 100%);
+    --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background: #ffffff;
+}
+
+/* Global font */
+body {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #ffffff;
+    min-height: 100vh;
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Buttons and other elements use Poppins as well */
+.map-button {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.form-group input,
+.form-group textarea {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.btn {
+    font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Disable hover visual changes for all cards */
+.invitation-card:hover::before,
+.location-card:hover::before,
+.included-card:hover::before,
+.rsvp-card:hover::before {
+    opacity: 0;
+}
+
+.invitation-card:hover,
+.location-card:hover,
+.included-card:hover,
+.rsvp-card:hover {
+    transform: none;
+    background: var(--card-bg);
+    border-color: var(--card-border);
+    box-shadow: none;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background: transparent;
+}
+
+/* Modern Header */
+.header {
+    text-align: center;
+    margin-bottom: 60px;
+    position: relative;
+}
+
+.main-title {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 900;
+    color: var(--ferrari-red);
+    margin-bottom: 30px;
+    letter-spacing: -0.02em;
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+/* Ferrari Color Palette Display */
+.ferrari-colors {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 40px 0;
+}
+
+.color-bar {
+    width: 80px;
+    height: 12px;
+    border-radius: 6px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.color-bar:hover {
+    transform: scaleY(1.5) scaleX(1.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+.color-bar.green { background: var(--ferrari-green); }
+.color-bar.white { background: var(--ferrari-white); border: 1px solid rgba(255, 255, 255, 0.2); }
+.color-bar.red { background: var(--ferrari-red); }
+.color-bar.yellow { background: var(--ferrari-yellow); }
+.color-bar.black { background: var(--ferrari-black); }
+
+/* Two-Pane Layout */
+.main-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 50px;
+    margin-bottom: 60px;
+    align-items: start;
+}
+
+/* Left Pane - Main Invitation */
+.left-pane {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+/* Right Pane - Side Content */
+.right-pane {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    position: sticky;
+    top: 40px;
+}
+
+/* Creative Invitation Card */
+.invitation-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    padding: 50px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.invitation-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.invitation-header {
+    margin-bottom: 30px;
+}
+
+.invitation-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    background: var(--gradient-secondary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+}
+
+.invitation-subtitle {
+    font-size: 1.4rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    font-weight: 300;
+}
+
+.invitation-names {
+    margin-bottom: 40px;
+}
+
+.guest-name {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    letter-spacing: -0.01em;
+}
+
+.host-signature {
+    font-size: 1.6rem;
+    color: var(--highlight);
+    font-weight: 600;
+    font-style: italic;
+    margin-bottom: 30px;
+}
+
+.invitation-message {
+    text-align: left;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.message-text {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+.highlight-text {
+    color: var(--ferrari-yellow);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+/* Location Card */
+.location-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.location-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-accent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.location-card h2 {
+    color: var(--text-primary);
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.address h3 {
+    color: var(--highlight);
+    font-size: 2rem;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.address p {
+    margin-bottom: 12px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+.map-link {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.map-button {
+    display: inline-block;
+    background: var(--gradient-accent);
+    color: white;
+    padding: 20px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 8px 25px rgba(79, 172, 254, 0.3);
+    font-size: 1.2rem;
+    letter-spacing: 0.5px;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    min-width: 250px;
+}
+
+.map-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(79, 172, 254, 0.4);
+}
+
+/* What's Included Card */
+.included-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 300px;
+}
+
+.included-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-secondary);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.included-card h3 {
+    color: var(--text-primary);
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.included-card ul {
+    list-style: none;
+    text-align: left;
+}
+
+.included-card li {
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    color: var(--text-secondary);
+    font-weight: 400;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    font-weight: 300;
+}
+
+.included-card li::before {
+    margin-right: 15px;
+    font-size: 1.3rem;
+}
+
+.included-card li:last-child {
+    border-bottom: none;
+}
+
+/* RSVP Card */
+.rsvp-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    min-height: 450px;
+}
+
+.rsvp-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.rsvp-card h2 {
+    color: var(--text-primary);
+    margin-bottom: 30px;
+    font-size: 2.2rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.rsvp-form {
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 18px 20px;
+    background: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: 'Playfair Display', serif;
+    color: #1a1a2e;
+    backdrop-filter: blur(10px);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #6c757d;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--highlight);
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 0 4px rgba(237, 28, 36, 0.1);
+}
+
+/* Modern Button Design */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.btn {
+    padding: 18px 36px;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: 'Playfair Display', serif;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.btn-rsvp {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: 0 8px 25px rgba(0, 154, 78, 0.3);
+}
+
+.btn-rsvp:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(0, 154, 78, 0.4);
+}
+
+.btn-cancel {
+    background: var(--gradient-secondary);
+    color: white;
+    box-shadow: 0 8px 25px rgba(237, 28, 36, 0.3);
+}
+
+.btn-cancel:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(237, 28, 36, 0.4);
+}
+
+/* Modern Footer */
+.footer {
+    text-align: center;
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    padding: 30px;
+    margin-top: 40px;
+}
+
+.footer p {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+/* Modern Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.modal-content {
+    background: var(--secondary);
+    margin: 10% auto;
+    padding: 40px;
+    border-radius: 24px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+    position: relative;
+    border: 1px solid var(--card-border);
+}
+
+.close {
+    color: var(--text-secondary);
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: 25px;
+    top: 20px;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: var(--highlight);
+}
+
+#modalMessage {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    font-weight: 600;
+    margin-top: 20px;
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .main-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .right-pane {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    .invitation-card {
+        padding: 30px 25px;
+        min-height: 400px;
+    }
+    
+    .location-card, .included-card, .rsvp-card {
+        padding: 30px 25px;
+        min-height: 250px;
+    }
+    
+    .invitation-title {
+        font-size: 2.2rem;
+    }
+    
+    .guest-name {
+        font-size: 2rem;
+    }
+    
+    .ferrari-colors {
+        gap: 10px;
+    }
+    
+    .color-bar {
+        width: 60px;
+        height: 8px;
+    }
+    
+    .map-button {
+        min-width: 200px;
+        padding: 16px 32px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Modern Animations */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.invitation-card { animation: slideInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
+.location-card { animation: slideInLeft 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards; }
+.included-card { animation: slideInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.1s forwards; }
+.rsvp-card { animation: slideInRight 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards; }
+
+/* Smooth scrolling */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--highlight);
+}
+
+/* Background final enforcement */
+html, body {
+    background-color: #ffffff !important;
+}
+
+/* In case any global wrapper sets a background, allow transparent */
+.container, .header, .main-content, .left-pane, .right-pane {
+    background-color: black;
+}

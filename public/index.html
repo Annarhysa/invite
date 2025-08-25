@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎉 Staycation Invitation - Green Oasis, Pune</title>
+    <link rel="stylesheet" href="styles.css?v=6">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="main-title">STAYCATION INVITATION</h1>
+                <p class="subtitle">An exclusive invitation to experience luxury and comfort at Green Oasis, Pune</p>
+                <div class="ferrari-colors">
+                    <div class="color-bar green" title="#009A4E"></div>
+                    <div class="color-bar white" title="#FFFFFF"></div>
+                    <div class="color-bar red" title="#ED1C24"></div>
+                    <div class="color-bar yellow" title="#FFF200"></div>
+                    <div class="color-bar black" title="#000000"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content - Two Pane Layout -->
+        <main class="main-content">
+            <!-- Left Pane - Main Invitation -->
+            <div class="left-pane">
+                <!-- Creative Invitation Card -->
+                <div class="invitation-card">
+                    <div class="invitation-header">
+                        <h2 class="invitation-title">Inviting</h2>
+                        <p class="invitation-subtitle">To a luxurious staycation experience</p>
+                    </div>
+                    <div class="invitation-names">
+                        <p class="guest-name">Prithvi Raja Shah</p>
+                        <p class="host-signature">By Annarhysa Albert</p>
+                    </div>
+                    <div class="invitation-message">
+                        <p class="message-text">
+                            Dear Prithvi,<br><br>
+                            The stars have aligned, and destiny has chosen you for an extraordinary adventure! 
+                            I'm thrilled to extend this exclusive invitation to experience the epitome of luxury 
+                            and comfort at my humble abode - Green Oasis.<br><br>
+                            This isn't just any invitation; it's a golden ticket to a world where time stands still, 
+                            where laughter echoes through the halls, and where memories are crafted with love and care. 
+                            Prepare to be pampered, entertained, and utterly spoiled!<br><br>
+                            Your presence will transform this staycation into a legendary gathering that will be 
+                            talked about for years to come. So pack your bags, bring your best smile, and get ready 
+                            for an experience that will leave you speechless!<br><br>
+                            <span class="highlight-text">The adventure awaits, and it's all for you! ✨</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Location Card -->
+                <div class="location-card">
+                    <h2><i class="fas fa-map-marker-alt"></i> Location</h2>
+                    <div class="address">
+                        <h3>Green Oasis</h3>
+                        <p>510, West Avenue</p>
+                        <p>Kalayani Nagar</p>
+                        <p>Pune - 41006</p>
+                    </div>
+                    <div class="map-link">
+                        <a href="https://maps.app.goo.gl/e6Udc29WYpCsVPwF7" target="_blank" class="map-button">
+                            <i class="fas fa-directions"></i> Get Directions
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Pane - Side Content -->
+            <div class="right-pane">
+                <!-- What's Included Card -->
+                <div class="included-card">
+                    <h3>What's Included</h3>
+                    <ul>
+                        <li>✨ Amazing company</li>
+                        <li>🍕 Delicious food</li>
+                        <li>🎵 Great music</li>
+                        <li>🌟 Unforgettable memories</li>
+                    </ul>
+                </div>
+
+                <!-- RSVP Card -->
+                <div class="rsvp-card">
+                    <h2><i class="fas fa-calendar-check"></i> RSVP</h2>
+                    <form id="rsvpForm" class="rsvp-form">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" placeholder="Any special requests or messages? (Optional)" rows="3"></textarea>
+                        </div>
+                        <div class="button-group">
+                            <button type="submit" class="btn btn-rsvp">
+                                <i class="fas fa-check"></i> RSVP - I'm Coming! 🎉
+                            </button>
+                            <button type="button" class="btn btn-cancel" onclick="handleCancel()">
+                                <i class="fas fa-times"></i> Cancel (Good Luck! 😄)
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>🎊 Created with love for an amazing staycation experience! 🎊</p>
+        </footer>
+    </div>
+
+    <!-- Notification Modal -->
+    <div id="notificationModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalMessage"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
